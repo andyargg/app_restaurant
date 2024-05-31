@@ -1,0 +1,6 @@
+C:\ANDY T\FACU\2DO CUATRI\PROGRA2\EXAMEN1PROGRA\BibResto\bin\Debug\BibResto.dll
+C:\ANDY T\FACU\2DO CUATRI\PROGRA2\EXAMEN1PROGRA\BibResto\bin\Debug\BibResto.pdb
+C:\ANDY T\FACU\2DO CUATRI\PROGRA2\EXAMEN1PROGRA\BibResto\obj\Debug\BibResto.csproj.AssemblyReference.cache
+C:\ANDY T\FACU\2DO CUATRI\PROGRA2\EXAMEN1PROGRA\BibResto\obj\Debug\BibResto.csproj.CoreCompileInputs.cache
+C:\ANDY T\FACU\2DO CUATRI\PROGRA2\EXAMEN1PROGRA\BibResto\obj\Debug\BibResto.dll
+C:\ANDY T\FACU\2DO CUATRI\PROGRA2\EXAMEN1PROGRA\BibResto\obj\Debug\BibResto.pdb
