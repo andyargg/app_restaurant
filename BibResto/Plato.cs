@@ -10,15 +10,15 @@ namespace BibResto
     {
         private string _nombre;
         private decimal _precio;
-        private decimal _tiempoPreparacion;
-        private List<(Producto producto, int cantidad)> _ingredientes;
-
-        public Plato(string nombre, List<(Producto producto, int cantidad)> ingredientes, decimal precio, int tiempoDePreparacion)
+        private decimal _tiempoPreparacion; 
+        private Dictionary<Producto, int> _ingredientes;
+        
+        public Plato(string nombre, decimal precio, Dictionary<Producto, int> ingredientes, int tiempoDePreparacion)
         {
-            _nombre = nombre;
-            _ingredientes = ingredientes;
-            _precio = precio;
-            _tiempoPreparacion = tiempoDePreparacion;
+            this._nombre = nombre;
+            this._ingredientes = ingredientes;
+            this._precio = precio;
+            this._tiempoPreparacion = tiempoDePreparacion;
         } 
 
         public string Nombre
@@ -36,10 +36,11 @@ namespace BibResto
             get { return _tiempoPreparacion; }
             set { _tiempoPreparacion = value; }
         }
-        public List<(Producto producto, int cantidad)> Ingredientes
+        public Dictionary<Producto, int> Ingredientes
         {
             get { return _ingredientes; }
             set { _ingredientes = value; }
         }
+        
     }
 }

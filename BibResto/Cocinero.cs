@@ -6,24 +6,92 @@ using System.Threading.Tasks;
 
 namespace BibResto
 {
-    public class Cocinero
+    public class Cocinero : Empleado
     {
-        public Plato CrearPlato(string nombrePlato, List<(Producto producto, int cantidad)> ingredientes, decimal precio, int tiempoDePreparacion)
+        private List<Plato> _menu;
+
+        public Cocinero(string _nombre, string _apellido, string _direccion, string _contacto, float _sueldo, string _rol) : base(_nombre, _apellido, _direccion, _contacto, _sueldo, _rol)
         {
-            return new Plato(nombrePlato, ingredientes, precio, tiempoDePreparacion);
+            _menu = new List<Plato>();
         }
 
-        public void ModificarPlato(
-            Plato plato, string nombre,
-            List<(Producto producto, int cantidad)> ingredientes,
-            decimal precio,
-            decimal tiempoPreparacion
-            )
+        //AGREGAR EXCEPCIONES
+        public void AgregarPlato(Plato plato)
         {
-            plato.Nombre = nombre;
-            plato.Ingredientes = ingredientes;
-            plato.Precio = precio;
-            plato.TiempoPreparacion = tiempoPreparacion;
+            _menu.Add(plato);
+        }
+        public void EliminarPlato(Plato plato)
+        {
+            _menu.Remove(plato);
+        }
+        public void CrearPlato(string nombrePlato, Dictionary<Producto, int> ingredientes, decimal precio, int tiempoDePreparacion)
+        {
+            if (ingredientes.Count() >= 2)
+            {
+                Plato plato = new Plato(nombrePlato, precio, ingredientes, tiempoDePreparacion);
+                AgregarPlato(plato);
+            }
+        }
+
+        public void ModificarPlato(Plato plato, string nombrePlato, Dictionary<Producto, int> ingredientes, decimal precio, decimal tiempoPreparacion)
+        {
+            foreach (Plato platoMenu in _menu)
+            {
+                if (platoMenu == plato)
+                {
+                    platoMenu.Nombre = nombrePlato;
+                    platoMenu.Ingredientes = ingredientes;
+                    platoMenu.Precio = precio;
+                    platoMenu.TiempoPreparacion = tiempoPreparacion;
+                }
+            }
+            //preguntar por Plato plato = _menu.Find(p => p.Nombre == nombrePlato);
+        }
+        public List<Plato> BuscarPlatoPorProducto(Producto producto)
+        {
+            List<Plato> platosConProducto = new List<Plato>();
+
+            foreach (Plato plato in _menu)
+            {
+                foreach (KeyValuePair<Producto, int> ingrediente in plato.Ingredientes)
+                {
+                    Producto productoPlato = ingrediente.Key;
+
+                    if (productoPlato == producto)
+                    {
+                        platosConProducto.Add(plato);
+                    }
+                }
+            }
+            platosConProducto.Sort((plato1, plato2) =>
+            {
+                int cantidad1 = plato1.Ingredientes[producto];
+                int cantidad2 = plato2.Ingredientes[producto];
+                return cantidad1.CompareTo(cantidad2); // Orden ascendente
+            });
+
+            return platosConProducto;
+        }
+
+        public List<Plato> PlatosSinStockSuficiente()
+        {
+            List<Plato> platosSinStock = new List<Plato>();
+
+            foreach (Plato plato in _menu)
+            {
+                foreach (KeyValuePair<Producto, int> ingrediente in plato.Ingredientes)
+                {
+                    Producto producto = ingrediente.Key;
+                    int cantidadNecesaria = ingrediente.Value;
+
+                    if (producto.Cantidad < cantidadNecesaria)
+                    {
+                        platosSinStock.Add(plato);
+                        break;
+                    }
+                }
+            }
+            return platosSinStock;
         }
     }
 }

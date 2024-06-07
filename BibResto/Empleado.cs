@@ -54,6 +54,6 @@ namespace BibResto
             get { return _rol; }
             set { _rol = value; }
         }
-        public abstract string MostrarInfo();
+        
     }
 }
