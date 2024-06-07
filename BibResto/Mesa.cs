@@ -10,13 +10,13 @@ namespace BibResto
     {
         private int _id;
         private int _capacidad;
-        private Mesero _mesero;
+        private  Empleado _empleado;
 
-        public Mesa(int _id, int _capacidad, Mesero _mesero)
+        public Mesa(int _id, int _capacidad, Empleado _empleado)
         {
             this._id = _id;
             this._capacidad = _capacidad;
-            this._mesero = _mesero;
+            this._empleado = _empleado;
         }
 
         public int Id 
@@ -29,10 +29,10 @@ namespace BibResto
             get { return _capacidad; }
             set { _capacidad = value; }
         }
-        public Mesero Mesero
+        public Empleado Empleado
         {
-            get { return _mesero; }
-            set { _mesero = value; }
+            get { return _empleado; }
+            set { _empleado = value; }
         }
     }
 }

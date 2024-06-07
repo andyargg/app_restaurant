@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BibResto
 {
-    internal class Plato
+    public class Encargado
     {
     }
 }

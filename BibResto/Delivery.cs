@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BibResto
 {
-    internal class Delivery
+    public class Delivery
     {
     }
 }
