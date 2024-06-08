@@ -16,6 +16,10 @@ namespace BibResto
         }
 
         //AGREGAR EXCEPCIONES
+        public List<Plato> Menu
+        {
+            get { return _menu; }
+        }
         public void AgregarPlato(Plato plato)
         {
             _menu.Add(plato);
@@ -24,7 +28,7 @@ namespace BibResto
         {
             _menu.Remove(plato);
         }
-        public void CrearPlato(string nombrePlato, Dictionary<Producto, int> ingredientes, decimal precio, int tiempoDePreparacion)
+        public void CrearPlato(string nombrePlato, decimal precio, Dictionary<Producto, int> ingredientes, int tiempoDePreparacion)
         {
             if (ingredientes.Count() >= 2)
             {
@@ -32,7 +36,6 @@ namespace BibResto
                 AgregarPlato(plato);
             }
         }
-
         public void ModificarPlato(Plato plato, string nombrePlato, Dictionary<Producto, int> ingredientes, decimal precio, decimal tiempoPreparacion)
         {
             foreach (Plato platoMenu in _menu)
@@ -84,10 +87,9 @@ namespace BibResto
                     Producto producto = ingrediente.Key;
                     int cantidadNecesaria = ingrediente.Value;
 
-                    if (producto.Cantidad < cantidadNecesaria)
+                    if (producto.Stock < cantidadNecesaria)
                     {
                         platosSinStock.Add(plato);
-                        break;
                     }
                 }
             }

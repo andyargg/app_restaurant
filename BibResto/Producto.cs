@@ -9,14 +9,14 @@ namespace BibResto
     public class Producto
     {
         private string _nombre;
-        private int _cantidad;
+        private int _stock;
         private float _precio;
 
 
-        public Producto(string _nombre, int _cantidad, float _precio)
+        public Producto(string _nombre, int _stock, float _precio)
         {
             this._nombre = _nombre;
-            this._cantidad = _cantidad;
+            this._stock = _stock;
             this._precio = _precio;
         }
 
@@ -25,10 +25,10 @@ namespace BibResto
             get { return _nombre; }
             set { _nombre = value; }
         }
-        public int Cantidad 
+        public int Stock 
         {
-            get { return _cantidad;}
-            set {  _cantidad = value; }
+            get { return _stock; }
+            set { _stock = value; }
         }
         public float Precio
         {

@@ -4,3 +4,9 @@ C:\ANDY T\FACU\2DO CUATRI\PROGRA2\EXAMEN1PROGRA\BibResto\obj\Debug\BibResto.cspr
 C:\ANDY T\FACU\2DO CUATRI\PROGRA2\EXAMEN1PROGRA\BibResto\obj\Debug\BibResto.csproj.CoreCompileInputs.cache
 C:\ANDY T\FACU\2DO CUATRI\PROGRA2\EXAMEN1PROGRA\BibResto\obj\Debug\BibResto.dll
 C:\ANDY T\FACU\2DO CUATRI\PROGRA2\EXAMEN1PROGRA\BibResto\obj\Debug\BibResto.pdb
+D:\ANDY FACU\2DO CUATRI\PROGRA2\app_restaurant\BibResto\bin\Debug\BibResto.dll
+D:\ANDY FACU\2DO CUATRI\PROGRA2\app_restaurant\BibResto\bin\Debug\BibResto.pdb
+D:\ANDY FACU\2DO CUATRI\PROGRA2\app_restaurant\BibResto\obj\Debug\BibResto.csproj.AssemblyReference.cache
+D:\ANDY FACU\2DO CUATRI\PROGRA2\app_restaurant\BibResto\obj\Debug\BibResto.csproj.CoreCompileInputs.cache
+D:\ANDY FACU\2DO CUATRI\PROGRA2\app_restaurant\BibResto\obj\Debug\BibResto.dll
+D:\ANDY FACU\2DO CUATRI\PROGRA2\app_restaurant\BibResto\obj\Debug\BibResto.pdb
