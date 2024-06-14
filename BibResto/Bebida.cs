@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BibResto
 {
-    public class Bebida
+    public class Bebida : IConsumible
     {
         private string nombre;
         private bool conAlcohol;

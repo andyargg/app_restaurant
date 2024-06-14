@@ -22,7 +22,19 @@ namespace BibResto
         }
         public void AgregarPlato(Plato plato)
         {
-            _menu.Add(plato);
+            bool stockSuficiente = true;
+            foreach (Producto producto in plato.Ingredientes.Keys)
+            {
+                if (producto.Stock < 20)
+                {
+                    stockSuficiente = false;
+                }
+            }
+
+            if (stockSuficiente)
+            {
+                Menu.Add(plato);
+            }
         }
         public void EliminarPlato(Plato plato)
         {
