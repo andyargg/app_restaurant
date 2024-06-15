@@ -10,13 +10,15 @@ namespace BibResto
     public class Encargado : Empleado
     {
         private const int LIMITE_AGOTARSE = 20;
-        public Encargado(string _nombre, string _apellido, string _direccion, string _contacto, float _sueldo, string _rol) : base(_nombre, _apellido, _direccion, _contacto, _sueldo, _rol)
+        private Restaurante _restaurante;
+        public Encargado(string _nombre, string _apellido, string _direccion, string _contacto, float _sueldo, string _rol, Restaurante _restaurante) : base(_nombre, _apellido, _direccion, _contacto, _sueldo, _rol)
         {
+            this._restaurante = _restaurante;
         }
 
-        public void AgregarArticulo(Restaurante restaurante, Producto producto, int cantidad)
+        public void AgregarArticulo(Producto producto, int cantidad)
         {
-            Producto productoEncontrado = restaurante.Stock.Find(p => p.Nombre == producto.Nombre);
+            Producto productoEncontrado = _restaurante.Stock.Find(p => p.Nombre == producto.Nombre);
             if (productoEncontrado != null)
             {
                 productoEncontrado.Stock += cantidad;
@@ -24,33 +26,32 @@ namespace BibResto
             else
             {
                 producto.Stock = cantidad;
-                restaurante.Stock.Add(producto);
+                _restaurante.Stock.Add(producto);
             }
         }
 
-        public List<Producto> ConsultaStockVigente(Restaurante restaurante)
+        public List<Producto> ConsultaStockVigente()
         {
-            return new List<Producto>(restaurante.Stock);
+            return new List<Producto>(_restaurante.Stock);
         }
 
-        public List<Producto> ConsultaStockPorAgotarse(Restaurante restaurante)
+        public List<Producto> ConsultaStockPorAgotarse()
         {
             var stockPorAgotarse = new List<Producto>();
 
-            foreach (var producto in restaurante.Stock)
+            foreach (var producto in _restaurante.Stock)
             {
                 if (producto.Stock <= LIMITE_AGOTARSE)
                 {
                     stockPorAgotarse.Add(producto);
                 }
             }
-
             return stockPorAgotarse;
         }
 
-        public void EstablecerPrecio(Restaurante restaurante, Producto productoNuevoPrecio, float nuevoPrecio)
+        public void EstablecerPrecio(Producto productoNuevoPrecio, float nuevoPrecio)
         {
-            Producto productoEncontrado = restaurante.Stock.Find(p => p.Nombre == productoNuevoPrecio.Nombre);
+            Producto productoEncontrado = _restaurante.Stock.Find(p => p.Nombre == productoNuevoPrecio.Nombre);
             if (productoEncontrado != null)
             {
                 productoEncontrado.Precio = nuevoPrecio;

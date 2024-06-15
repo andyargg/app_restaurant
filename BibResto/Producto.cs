@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BibResto
 {
-    public class Producto
+     public class Producto : IConsumible
     {
         private string _nombre;
         private int _stock;

@@ -1,25 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BibResto
 {
     public class Cocinero : Empleado
     {
-        private List<Plato> _menu;
 
-        public Cocinero(string _nombre, string _apellido, string _direccion, string _contacto, float _sueldo, string _rol) : base(_nombre, _apellido, _direccion, _contacto, _sueldo, _rol)
+        private Restaurante _restaurante;
+        public Cocinero(string _nombre, string _apellido, string _direccion, string _contacto, float _sueldo, string _rol, Restaurante _restaurante) : base(_nombre, _apellido, _direccion, _contacto, _sueldo, _rol)
         {
-            _menu = new List<Plato>();
+            this._restaurante = _restaurante;
         }
 
         //AGREGAR EXCEPCIONES
-        public List<Plato> Menu
-        {
-            get { return _menu; }
-        }
+
         public void AgregarPlato(Plato plato)
         {
             bool stockSuficiente = true;
@@ -33,14 +27,14 @@ namespace BibResto
 
             if (stockSuficiente)
             {
-                Menu.Add(plato);
+                _restaurante.Menu.Add(plato);
             }
         }
         public void EliminarPlato(Plato plato)
         {
-            _menu.Remove(plato);
+            _restaurante.Menu.Remove(plato);
         }
-        public void CrearPlato(string nombrePlato, decimal precio, Dictionary<Producto, int> ingredientes, int tiempoDePreparacion)
+        public void CrearPlato(string nombrePlato, decimal precio, Dictionary<IConsumible, int> ingredientes, int tiempoDePreparacion)
         {
             if (ingredientes.Count() >= 2)
             {
@@ -48,9 +42,9 @@ namespace BibResto
                 AgregarPlato(plato);
             }
         }
-        public void ModificarPlato(Plato plato, string nombrePlato, Dictionary<Producto, int> ingredientes, decimal precio, decimal tiempoPreparacion)
+        public void ModificarPlato(Plato plato, string nombrePlato, Dictionary<IConsumible, int> ingredientes, decimal precio, decimal tiempoPreparacion)
         {
-            foreach (Plato platoMenu in _menu)
+            foreach (Plato platoMenu in _restaurante.Menu)
             {
                 if (platoMenu == plato)
                 {
@@ -66,11 +60,11 @@ namespace BibResto
         {
             List<Plato> platosConProducto = new List<Plato>();
 
-            foreach (Plato plato in _menu)
+            foreach (Plato plato in _restaurante.Menu)
             {
-                foreach (KeyValuePair<Producto, int> ingrediente in plato.Ingredientes)
+                foreach (KeyValuePair<IConsumible, int> ingrediente in plato.Ingredientes)
                 {
-                    Producto productoPlato = ingrediente.Key;
+                    IConsumible productoPlato = ingrediente.Key;
 
                     if (productoPlato == producto)
                     {
@@ -92,19 +86,38 @@ namespace BibResto
         {
             List<Plato> platosSinStock = new List<Plato>();
 
-            foreach (Plato plato in _menu)
+            foreach (Plato plato in _restaurante.Menu)
             {
-                foreach (KeyValuePair<Producto, int> ingrediente in plato.Ingredientes)
+                foreach (KeyValuePair<IConsumible, int> ingrediente in plato.Ingredientes)
                 {
-                    Producto producto = ingrediente.Key;
+                    IConsumible producto = ingrediente.Key;
                     int cantidadNecesaria = ingrediente.Value;
 
-                    if (producto.Stock < cantidadNecesaria)
+                    var productoEnStock = _restaurante.Stock.FirstOrDefault(p => p.Equals(producto));
+
+                    if (productoEnStock == null || productoEnStock.Stock < cantidadNecesaria)
                     {
-                        platosSinStock.Add(plato);
+                        
                     }
+
+
                 }
             }
+
+
+            //foreach (Plato plato in _restaurante.Menu)
+            //{
+            //    foreach (KeyValuePair<IConsumible, int> ingrediente in plato.Ingredientes)
+            //    {
+            //        IConsumible producto = ingrediente.Key;
+            //        int cantidadNecesaria = ingrediente.Value;
+
+            //        if (_restaurante.Stock < cantidadNecesaria)
+            //        {
+            //            platosSinStock.Add(plato);
+            //        }
+            //    }
+            //}
             return platosSinStock;
         }
     }

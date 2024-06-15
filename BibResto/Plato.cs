@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace BibResto
 {
-    public class Plato
+    public class Plato 
     {
         private string _nombre;
         private decimal _precio;
         private decimal _tiempoPreparacion; 
-        private Dictionary<Producto, int> _ingredientes;
+        private Dictionary<IConsumible, int> _ingredientes;
         
-        public Plato(string nombre, decimal precio, Dictionary<Producto, int> ingredientes, int tiempoDePreparacion)
+        public Plato(string nombre, decimal precio, Dictionary<IConsumible, int> ingredientes, int tiempoDePreparacion)
         {
             this._nombre = nombre;
             this._ingredientes = ingredientes;
@@ -36,7 +36,7 @@ namespace BibResto
             get { return _tiempoPreparacion; }
             set { _tiempoPreparacion = value; }
         }
-        public Dictionary<Producto, int> Ingredientes
+        public Dictionary<IConsumible, int> Ingredientes
         {
             get { return _ingredientes; }
             set { _ingredientes = value; }
