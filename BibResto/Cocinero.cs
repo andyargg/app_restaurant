@@ -16,19 +16,7 @@ namespace BibResto
 
         public void AgregarPlato(Plato plato)
         {
-            bool stockSuficiente = true;
-            foreach (Producto producto in plato.Ingredientes.Keys)
-            {
-                if (producto.Stock < 20)
-                {
-                    stockSuficiente = false;
-                }
-            }
-
-            if (stockSuficiente)
-            {
                 _restaurante.Menu.Add(plato);
-            }
         }
         public void EliminarPlato(Plato plato)
         {
@@ -42,7 +30,7 @@ namespace BibResto
                 AgregarPlato(plato);
             }
         }
-        public void ModificarPlato(Plato plato, string nombrePlato, Dictionary<IConsumible, int> ingredientes, decimal precio, decimal tiempoPreparacion)
+        public void ModificarPlato(Plato plato, string nombrePlato, decimal precio, Dictionary<IConsumible, int> ingredientes,  decimal tiempoPreparacion)
         {
             foreach (Plato platoMenu in _restaurante.Menu)
             {
@@ -56,7 +44,7 @@ namespace BibResto
             }
             //preguntar por Plato plato = _menu.Find(p => p.Nombre == nombrePlato);
         }
-        public List<Plato> BuscarPlatoPorProducto(Producto producto)
+        public List<Plato> BuscarPlatoPorProducto(IConsumible producto)
         {
             List<Plato> platosConProducto = new List<Plato>();
 
@@ -88,36 +76,28 @@ namespace BibResto
 
             foreach (Plato plato in _restaurante.Menu)
             {
+                bool sinStockSuficiente = false;
+
                 foreach (KeyValuePair<IConsumible, int> ingrediente in plato.Ingredientes)
                 {
                     IConsumible producto = ingrediente.Key;
                     int cantidadNecesaria = ingrediente.Value;
 
-                    var productoEnStock = _restaurante.Stock.FirstOrDefault(p => p.Equals(producto));
+                    IConsumible productoEnStock = _restaurante.Stock.FirstOrDefault(p => p.Equals(producto));
 
                     if (productoEnStock == null || productoEnStock.Stock < cantidadNecesaria)
                     {
-                        
+                        sinStockSuficiente = true;
+                        break; // Salir  si no hay suficiente stock
                     }
+                }
 
-
+                if (sinStockSuficiente)
+                {
+                    platosSinStock.Add(plato);
                 }
             }
 
-
-            //foreach (Plato plato in _restaurante.Menu)
-            //{
-            //    foreach (KeyValuePair<IConsumible, int> ingrediente in plato.Ingredientes)
-            //    {
-            //        IConsumible producto = ingrediente.Key;
-            //        int cantidadNecesaria = ingrediente.Value;
-
-            //        if (_restaurante.Stock < cantidadNecesaria)
-            //        {
-            //            platosSinStock.Add(plato);
-            //        }
-            //    }
-            //}
             return platosSinStock;
         }
     }

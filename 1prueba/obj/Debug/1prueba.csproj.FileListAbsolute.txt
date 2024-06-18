@@ -8,3 +8,13 @@ D:\ANDY FACU\2DO CUATRI\PROGRA2\app_restaurant\1prueba\obj\Debug\1prueba.csproj.
 D:\ANDY FACU\2DO CUATRI\PROGRA2\app_restaurant\1prueba\obj\Debug\1prueba.csproj.Up2Date
 D:\ANDY FACU\2DO CUATRI\PROGRA2\app_restaurant\1prueba\obj\Debug\1prueba.exe
 D:\ANDY FACU\2DO CUATRI\PROGRA2\app_restaurant\1prueba\obj\Debug\1prueba.pdb
+C:\ANDY T\FACU\2DO CUATRI\PROGRA2\TP1\app_restaurant\1prueba\bin\Debug\1prueba.exe.config
+C:\ANDY T\FACU\2DO CUATRI\PROGRA2\TP1\app_restaurant\1prueba\bin\Debug\1prueba.exe
+C:\ANDY T\FACU\2DO CUATRI\PROGRA2\TP1\app_restaurant\1prueba\bin\Debug\1prueba.pdb
+C:\ANDY T\FACU\2DO CUATRI\PROGRA2\TP1\app_restaurant\1prueba\bin\Debug\BibResto.dll
+C:\ANDY T\FACU\2DO CUATRI\PROGRA2\TP1\app_restaurant\1prueba\bin\Debug\BibResto.pdb
+C:\ANDY T\FACU\2DO CUATRI\PROGRA2\TP1\app_restaurant\1prueba\obj\Debug\1prueba.csproj.AssemblyReference.cache
+C:\ANDY T\FACU\2DO CUATRI\PROGRA2\TP1\app_restaurant\1prueba\obj\Debug\1prueba.csproj.CoreCompileInputs.cache
+C:\ANDY T\FACU\2DO CUATRI\PROGRA2\TP1\app_restaurant\1prueba\obj\Debug\1prueba.csproj.Up2Date
+C:\ANDY T\FACU\2DO CUATRI\PROGRA2\TP1\app_restaurant\1prueba\obj\Debug\1prueba.exe
+C:\ANDY T\FACU\2DO CUATRI\PROGRA2\TP1\app_restaurant\1prueba\obj\Debug\1prueba.pdb

@@ -9,10 +9,11 @@ namespace BibResto
     public class Bebida : IConsumible
     {
         private string _nombre;
-        private string _stock;
+        private int _stock;
+        private float _precio;
         private bool _conAlcohol;
 
-        public Bebida(string _nombre, string _stock, bool _conAlcohol)
+        public Bebida(string _nombre, int _stock, bool _conAlcohol)
         {
             this._nombre = _nombre;
             this._stock = _stock;
@@ -24,15 +25,22 @@ namespace BibResto
             get { return _nombre; } 
             set { _nombre = value; }
         }
-        public string Stock
+        public int Stock
         {
             get { return _stock; }
             set {  this._stock = value; }
+        }
+        public float Precio
+        {
+            get { return _precio; }
+            set { _precio = value; }
         }
         public bool ConAlcohol 
         {
             get { return _conAlcohol; }
             set { _conAlcohol = value; }
         }
+
+       
     }
 }

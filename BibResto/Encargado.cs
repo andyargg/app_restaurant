@@ -16,42 +16,42 @@ namespace BibResto
             this._restaurante = _restaurante;
         }
 
-        public void AgregarArticulo(Producto producto, int cantidad)
+        public void AgregarArticulo(IConsumible consumible, int cantidad)
         {
-            Producto productoEncontrado = _restaurante.Stock.Find(p => p.Nombre == producto.Nombre);
-            if (productoEncontrado != null)
+            IConsumible consumibleEncontrado = _restaurante.Stock.Find(p => p.Nombre == consumible.Nombre);
+            if (consumibleEncontrado != null)
             {
-                productoEncontrado.Stock += cantidad;
+                consumibleEncontrado.Stock += cantidad;
             }
             else
             {
-                producto.Stock = cantidad;
-                _restaurante.Stock.Add(producto);
+                consumibleEncontrado.Stock = cantidad;
+                _restaurante.Stock.Add(consumibleEncontrado);
             }
         }
 
-        public List<Producto> ConsultaStockVigente()
+        public List<IConsumible> ConsultaStockVigente()
         {
-            return new List<Producto>(_restaurante.Stock);
+            return new List<IConsumible>(_restaurante.Stock);
         }
 
-        public List<Producto> ConsultaStockPorAgotarse()
+        public List<IConsumible> ConsultaStockPorAgotarse()
         {
-            var stockPorAgotarse = new List<Producto>();
+            var stockPorAgotarse = new List<IConsumible>();
 
-            foreach (var producto in _restaurante.Stock)
+            foreach (IConsumible consumible in _restaurante.Stock)
             {
-                if (producto.Stock <= LIMITE_AGOTARSE)
+                if (consumible.Stock <= LIMITE_AGOTARSE)
                 {
-                    stockPorAgotarse.Add(producto);
+                    stockPorAgotarse.Add(consumible);
                 }
             }
             return stockPorAgotarse;
         }
 
-        public void EstablecerPrecio(Producto productoNuevoPrecio, float nuevoPrecio)
+        public void EstablecerPrecio(IConsumible productoNuevoPrecio, float nuevoPrecio)
         {
-            Producto productoEncontrado = _restaurante.Stock.Find(p => p.Nombre == productoNuevoPrecio.Nombre);
+            IConsumible productoEncontrado = _restaurante.Stock.Find(p => p.Nombre == productoNuevoPrecio.Nombre);
             if (productoEncontrado != null)
             {
                 productoEncontrado.Precio = nuevoPrecio;

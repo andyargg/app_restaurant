@@ -12,26 +12,45 @@ namespace _1prueba
     {
         static void Main(string[] args)
         {
-            Cocinero cocinero = new Cocinero("Andres", "Arguindegui", "abc 123", "247", 300, "Cocinero");
-            Producto milanesa = new Producto("Milanesa", 300, 105);
-            Producto pure = new Producto("Pure", 100, 50);
-            Dictionary<Producto, int> ingredientes = new Dictionary<Producto, int>
-                {
-                    {milanesa, 20},
-                    {pure, 10}
+            Restaurante restaurant = new Restaurante();
+            Cocinero cocinero = new Cocinero("Andres", "Arguindegui", "abc 123", "247", 300, "Cocinero", restaurant);
+
+            // Arrange
+            IConsumible carne = new Producto("Milanesa", 10, 105);
+            IConsumible pure = new Producto("Pure", 5, 50);
+            Dictionary<IConsumible, int> ingredientes2 = new Dictionary<IConsumible, int>
+            {
+                { carne, 1000 },
+                { pure, 10000 }
             };
-            Plato expected = new Plato("Milanesa con pure", 400, ingredientes, 30);
 
-            cocinero.CrearPlato("Milanesa con pure", 400, ingredientes, 30);
+            // Act
+            cocinero.CrearPlato("Carne con pure", 30, ingredientes2, 40);
 
-
-            foreach (Plato plato in cocinero.Menu)
+            // Verificar el menú
+            Console.WriteLine("Menú del restaurante:");
+            foreach (Plato plato in restaurant.Menu)
             {
                 Console.WriteLine(plato.Nombre);
-                Console.WriteLine(expected.Nombre);
             }
 
-            Console.ReadKey();        
+            // Verificar el stock
+            Console.WriteLine("Stock del restaurante:");
+            foreach (IConsumible producto in restaurant.Stock)
+            {
+                Console.WriteLine($"{producto.Nombre}: {producto.Stock}");
+            }
+
+            // Assert
+            List<Plato> platoSinStock = cocinero.PlatosSinStockSuficiente();
+            Console.WriteLine("Platos sin stock suficiente:");
+            foreach (Plato p in platoSinStock)
+            {
+                Console.WriteLine(p.Nombre);
+            }
+
+            Console.ReadKey();
         }
+
     }
 }

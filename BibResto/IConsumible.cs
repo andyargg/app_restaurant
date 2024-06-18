@@ -8,5 +8,10 @@ namespace BibResto
 {
     public interface IConsumible
     {
+        string Nombre { get; set; }
+        int Stock { get; set; }
+        float Precio {  get; set; }
+
     }
+
 }

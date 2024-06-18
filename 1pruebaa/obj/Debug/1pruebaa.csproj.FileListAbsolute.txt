@@ -1,0 +1,10 @@
+C:\ANDY T\FACU\2DO CUATRI\PROGRA2\TP1\app_restaurant\1pruebaa\bin\Debug\1pruebaa.exe.config
+C:\ANDY T\FACU\2DO CUATRI\PROGRA2\TP1\app_restaurant\1pruebaa\bin\Debug\1pruebaa.exe
+C:\ANDY T\FACU\2DO CUATRI\PROGRA2\TP1\app_restaurant\1pruebaa\bin\Debug\1pruebaa.pdb
+C:\ANDY T\FACU\2DO CUATRI\PROGRA2\TP1\app_restaurant\1pruebaa\bin\Debug\BibResto.dll
+C:\ANDY T\FACU\2DO CUATRI\PROGRA2\TP1\app_restaurant\1pruebaa\bin\Debug\BibResto.pdb
+C:\ANDY T\FACU\2DO CUATRI\PROGRA2\TP1\app_restaurant\1pruebaa\obj\Debug\1pruebaa.csproj.AssemblyReference.cache
+C:\ANDY T\FACU\2DO CUATRI\PROGRA2\TP1\app_restaurant\1pruebaa\obj\Debug\1pruebaa.csproj.CoreCompileInputs.cache
+C:\ANDY T\FACU\2DO CUATRI\PROGRA2\TP1\app_restaurant\1pruebaa\obj\Debug\1pruebaa.csproj.Up2Date
+C:\ANDY T\FACU\2DO CUATRI\PROGRA2\TP1\app_restaurant\1pruebaa\obj\Debug\1pruebaa.exe
+C:\ANDY T\FACU\2DO CUATRI\PROGRA2\TP1\app_restaurant\1pruebaa\obj\Debug\1pruebaa.pdb
