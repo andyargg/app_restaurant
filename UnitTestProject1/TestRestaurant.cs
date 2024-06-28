@@ -72,10 +72,7 @@ namespace UnitTestProject1
 
             decimal consumoTotal = _restaurante.CalcularConsumoTotal();
 
-            Assert.AreEqual(37, consumoTotal); // Ajustar el valor esperado según el escenario de prueba
-
-            
-          
+            Assert.AreEqual(37, consumoTotal); // Ajustar el valor
         }
     }
 }
