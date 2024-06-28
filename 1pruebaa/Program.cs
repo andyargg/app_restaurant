@@ -13,30 +13,38 @@ namespace _1pruebaa
         {
            
             {
-                Proveedor proveedor1 = new Proveedor("Proveedor 1", "Bebidas 1", "Efectivo", "22", "san martin 700", 4);
+                // Crear instancias necesarias
                 Restaurante restaurante = new Restaurante();
-                ContabilidadRestaurante contabilidad = new ContabilidadRestaurante();
-                Encargado encargado = new Encargado("Andres", "ARrguindegui", "siempreviva123", "46", 1000, "empleado", restaurante, contabilidad);
+                ContabilidadRestaurante _contabilidad = new ContabilidadRestaurante();
+                Encargado _encargado = new Encargado("Andres", "ARrguindegui", "siempreviva123", "46", 1000, "empleado", restaurante, _contabilidad);
+                Mesero mesero1 = new Mesero("Juan", "Perez", "Dirección 123", "123456789", 1500, "Mesero", true, _encargado);
+                Delivery delivery1 = new Delivery("Pedro", "Gomez", "Dirección 456", "987654321", 1200, "Delivery", true);
+                Mesa mesa1 = new Mesa(1, 4, mesero1, "Abierta", "Efectivo");
 
-                // Configurar condiciones para el test
-                IConsumible bebida = new Bebida("CocaCola", 10, 1500, false);  // Precio alto para asegurar deuda
+                // Agregar mesero, delivery y mesa al restaurante
+                restaurante.AgregarMesero(mesero1);
+                restaurante.AgregarDelivery(delivery1);
+                restaurante.AgregarMesa(mesa1);
 
-                // Agregar dinero disponible al contabilidad
-                contabilidad.DineroDisponible = 1000;
+                // Crear algunos platos
+                Plato plato1 = new Plato("Bife con ensalada", 10, new Dictionary<IConsumible, int>(), 10);
+                Plato plato2 = new Plato("Pasta con salsa", 15, new Dictionary<IConsumible, int>(), 12);
+                Plato plato3 = new Plato("Pizza napolitana", 12, new Dictionary<IConsumible, int>(), 8);
 
-                // Actuar: Llamar al método AgregarArticulo del Encargado
-                encargado.AgregarArticulo(bebida, 1, proveedor1);
+                // Asignar platos a mesas y deliveries
+                mesero1.AsignarPlatoMesa(plato1, mesa1);
+                delivery1.AgregarPlato(plato2);
+                delivery1.PagoEfectuado();
+                mesero1.AsignarPlatoMesa(plato3, mesa1);
+                mesa1.PagoRealizado();
 
-                // Verificar: Imprimir resultados para confirmar que la deuda se haya agregado correctamente
-                decimal deuda = contabilidad.GetDeuda(proveedor1);
-                decimal dineroDisponible = contabilidad.DineroDisponible;
+                // Calcular el consumo total
+                decimal consumoTotal = restaurante.CalcularConsumoTotal();
 
-                Console.WriteLine($"Deuda con {proveedor1.Nombre}: {deuda}");
-                Console.WriteLine($"Dinero disponible después de la operación: {dineroDisponible}");
+                // Mostrar resultado por consola
+                Console.WriteLine($"Consumo total del restaurante: {consumoTotal}");
 
-                // Esperar la entrada del usuario antes de cerrar la aplicación
-                Console.ReadLine();
-
+                Console.ReadKey();
 
 
             }

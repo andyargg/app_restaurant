@@ -11,11 +11,19 @@ namespace BibResto
         private bool _disponible;
         private decimal _pagoTotalDia;
         private Encargado _encargado;
-        public Mesero(string _nombre, string _apellido, string _direccion, string _contacto, decimal _sueldo, string _rol, bool disponible, Encargado encargado) : base(_nombre, _apellido, _direccion, _contacto, _sueldo, _rol)
+        private List<decimal> _listaPagosDiarios;
+        public Mesero(string _nombre, string _apellido, string _direccion, string _contacto, decimal _sueldo, string _rol, bool disponible, Encargado encargado) 
+            : base(_nombre, _apellido, _direccion, _contacto, _sueldo, _rol)
         {
             this._disponible = disponible;
             this._pagoTotalDia = 0;
             this._encargado = encargado;
+            this._listaPagosDiarios = new List<decimal>();
+        }
+        public List<decimal> ListaPagosDiarios
+        {
+            get { return _listaPagosDiarios; }
+            set {  _listaPagosDiarios = value;}
         }
         public bool Disponible
         {

@@ -51,9 +51,8 @@
   <ItemGroup>
     <Compile Include="TestCocinero.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestDelivery.cs" />
+    <Compile Include="TestRestaurant.cs" />
     <Compile Include="TestEncargado.cs" />
-    <Compile Include="TestMesero.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

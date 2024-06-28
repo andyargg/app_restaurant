@@ -175,7 +175,7 @@ namespace UnitTestProject1
             Mesero mesero1 = new Mesero("Juan", "Perez", "Dirección 123", "123456789", 1500, "Mesero", true, _encargado);
             Mesa mesa1 = new Mesa(1, 4, mesero1, "Abierta", "Efectivo");
 
-            mesero1.AsignarPlatoMesa(plato1, mesa1);
+            mesero1.AsignarPlatoMesa(plato2, mesa1);
 
             Assert.AreEqual(280, carne.Stock);
         }

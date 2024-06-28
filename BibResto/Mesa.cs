@@ -24,6 +24,10 @@ namespace BibResto
             this._estado = estado;
             this._medioDePago = _medioDePago;
         }
+        public List<Plato> PlatosAsignados
+        {
+            get { return _platosAsignados; }
+        }
         public int Id
         {
             get { return _id; }
@@ -59,7 +63,10 @@ namespace BibResto
             foreach (Plato plato in _platosAsignados)
             {
                 Mesero.PagoTotalDia += plato.Precio;
+                Mesero.ListaPagosDiarios.Add(plato.Precio);
             }
+            PlatosAsignados.Clear();
+
         }
     }
 }
