@@ -56,22 +56,5 @@ namespace BibResto
             get { return _diaEntrega; }
             set { _diaEntrega = value; }
         }
-
-        public string MostrarInfo()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine
-                (
-                    $"Nombre:{Nombre}" + 
-                    $"Tipo de producto: {TipoProducto}"+
-                    $"Medio de pago: {MedioDePago}"+
-                    $"CUIT: {Cuit}"+
-                    $"Direccion: {Direccion}"+
-                    $"Dia de entrega: {DiaEntrega}"
-
-                );
-
-            return sb.ToString();
-        }
     }
 }
