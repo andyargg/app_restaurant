@@ -12,10 +12,10 @@ namespace BibResto
         protected string _apellido;
         protected string _direccion;
         protected string _contacto;
-        protected float _sueldo;
+        protected decimal _sueldo;
         
 
-        public Empleado(string _nombre, string _apellido, string _direccion, string _contacto, float _sueldo, string _rol)
+        public Empleado(string _nombre, string _apellido, string _direccion, string _contacto, decimal _sueldo, string _rol)
         {
             this._nombre = _nombre;
             this._apellido = _apellido;
@@ -44,7 +44,7 @@ namespace BibResto
             get { return _contacto; }
             set { _contacto = value; }
         }
-        public float Sueldo
+        public decimal Sueldo
         {
             get { return _sueldo; }
             set { _sueldo = value; }

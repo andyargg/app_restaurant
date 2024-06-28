@@ -10,13 +10,14 @@ namespace BibResto
     {
         private string _nombre;
         private int _stock;
-        private float _precio;
+        private decimal _precio;
         private bool _conAlcohol;
 
-        public Bebida(string _nombre, int _stock, bool _conAlcohol)
+        public Bebida(string _nombre, int _stock, decimal _precio, bool _conAlcohol)
         {
             this._nombre = _nombre;
             this._stock = _stock;
+            this._precio = _precio;
             this._conAlcohol = _conAlcohol;
         }   
 
@@ -30,7 +31,7 @@ namespace BibResto
             get { return _stock; }
             set {  this._stock = value; }
         }
-        public float Precio
+        public decimal Precio
         {
             get { return _precio; }
             set { _precio = value; }
@@ -40,7 +41,5 @@ namespace BibResto
             get { return _conAlcohol; }
             set { _conAlcohol = value; }
         }
-
-       
     }
 }

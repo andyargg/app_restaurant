@@ -13,40 +13,32 @@ namespace _1pruebaa
         {
            
             {
-                Restaurante restaurant = new Restaurante();
-                Cocinero cocinero = new Cocinero("Andres", "Arguindegui", "abc 123", "247", 300, "Cocinero", restaurant);
+                Proveedor proveedor1 = new Proveedor("Proveedor 1", "Bebidas 1", "Efectivo", "22", "san martin 700", 4);
+                Restaurante restaurante = new Restaurante();
+                ContabilidadRestaurante contabilidad = new ContabilidadRestaurante();
+                Encargado encargado = new Encargado("Andres", "ARrguindegui", "siempreviva123", "46", 1000, "empleado", restaurante);
 
-                // Arrange
-                IConsumible carne = new Producto("Milanesa", 10, 105);
-                IConsumible pure = new Producto("Pure", 5, 50);
-                Dictionary<IConsumible, int> ingredientes2 = new Dictionary<IConsumible, int>
-                {
-                    { carne, 1000 },
-                    { pure, 10000 }
-                };
+                // Configurar condiciones para el test
+                IConsumible bebida = new Bebida("CocaCola", 10, 1500, false);  // Precio alto para asegurar deuda
 
-                // Act
-                cocinero.CrearPlato("Carne con pure", 30, ingredientes2, 40);
+                // Agregar dinero disponible al contabilidad
+                contabilidad.DineroDisponible = 1000;
 
-                // Verificar el menú
-                Console.WriteLine("Menú del restaurante:");
-                foreach (Plato plato in restaurant.Menu)
-                {
-                    Console.WriteLine(plato.Nombre);
-                }
+                // Actuar: Llamar al método AgregarArticulo del Encargado
+                encargado.AgregarArticulo(bebida, 1, proveedor1);
 
-                // Verificar el stock
-               
+                // Verificar: Imprimir resultados para confirmar que la deuda se haya agregado correctamente
+                decimal deuda = contabilidad.GetDeuda(proveedor1);
+                decimal dineroDisponible = contabilidad.DineroDisponible;
 
-                // Assert
-                List<Plato> platoSinStock = cocinero.PlatosSinStockSuficiente();
-                Console.WriteLine("Platos sin stock suficiente:");
-                foreach (Plato p in platoSinStock)
-                {
-                    Console.WriteLine(p.Nombre);
-                }
+                Console.WriteLine($"Deuda con {proveedor1.Nombre}: {deuda}");
+                Console.WriteLine($"Dinero disponible después de la operación: {dineroDisponible}");
 
-                Console.ReadKey();
+                // Esperar la entrada del usuario antes de cerrar la aplicación
+                Console.ReadLine();
+
+
+
             }
         }
     }

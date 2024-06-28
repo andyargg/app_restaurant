@@ -9,7 +9,7 @@ using BibResto;
 namespace UnitTestProject1
 {
     [TestClass]
-    public class CalcPlato
+    public class TestCocinero
     {
         [TestClass]
         public class RestauranteTests

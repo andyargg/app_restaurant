@@ -10,7 +10,7 @@ namespace BibResto
     {
         string Nombre { get; set; }
         int Stock { get; set; }
-        float Precio {  get; set; }
+        decimal Precio {  get; set; }
 
     }
 

@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Bebida.cs" />
     <Compile Include="Cocinero.cs" />
+    <Compile Include="ContabilidadRestaurante.cs" />
     <Compile Include="Delivery.cs" />
     <Compile Include="Empleado.cs" />
     <Compile Include="Encargado.cs" />

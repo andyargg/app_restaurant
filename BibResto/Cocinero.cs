@@ -7,7 +7,7 @@ namespace BibResto
     {
 
         private Restaurante _restaurante;
-        public Cocinero(string _nombre, string _apellido, string _direccion, string _contacto, float _sueldo, string _rol, Restaurante _restaurante) : base(_nombre, _apellido, _direccion, _contacto, _sueldo, _rol)
+        public Cocinero(string _nombre, string _apellido, string _direccion, string _contacto, decimal _sueldo, string _rol, Restaurante _restaurante) : base(_nombre, _apellido, _direccion, _contacto, _sueldo, _rol)
         {
             this._restaurante = _restaurante;
         }

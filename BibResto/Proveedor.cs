@@ -14,9 +14,9 @@ namespace BibResto
         private string _medioDePago;
         private string _cuit;
         private string _direccion;
-        private string _diaEntrega;
+        private int _diaEntrega;
 
-        public Proveedor(string _nombre, string _tipoProducto, string _medioDePago, string _cuit, string _direccion, string _diaEntrega)
+        public Proveedor(string _nombre, string _tipoProducto, string _medioDePago, string _cuit, string _direccion, int _diaEntrega)
         {
             this._nombre = _nombre;
             this._tipoProducto = _tipoProducto;
@@ -51,7 +51,7 @@ namespace BibResto
             get { return _direccion; }
             set { _direccion = value; }
         }
-        public string DiaEntrega
+        public int DiaEntrega
         {
             get { return _diaEntrega; }
             set { _diaEntrega = value; }

@@ -49,8 +49,11 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CalcPlato.cs" />
+    <Compile Include="TestCocinero.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestDelivery.cs" />
+    <Compile Include="TestEncargado.cs" />
+    <Compile Include="TestMesero.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

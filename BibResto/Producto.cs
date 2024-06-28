@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace BibResto
 {
-     public class Producto : IConsumible
+    public class Producto : IConsumible
     {
         private string _nombre;
         private int _stock;
-        private float _precio;
+        private decimal _precio;
 
 
-        public Producto(string _nombre, int _stock, float _precio)
+        public Producto(string _nombre, int _stock, decimal _precio)
         {
             this._nombre = _nombre;
             this._stock = _stock;
@@ -30,7 +30,7 @@ namespace BibResto
             get { return _stock; }
             set { _stock = value; }
         }
-        public float Precio
+        public decimal Precio
         {
             get { return _precio; }
             set { _precio = value; }
