@@ -12,11 +12,9 @@ namespace BibResto
         private List<Plato> _platosAsignadosDelivery;
         private bool _disponible;
         private decimal _pagoTotalDia;
-        private string _medioDePago;
-        public Delivery(string _nombre, string _apellido, string _direccion, string _contacto, decimal _sueldo, string _rol, bool disponible,  string medioDePago) : base(_nombre, _apellido, _direccion, _contacto, _sueldo, _rol)
+        public Delivery(string _nombre, string _apellido, string _direccion, string _contacto, decimal _sueldo, string _rol, bool disponible) : base(_nombre, _apellido, _direccion, _contacto, _sueldo, _rol)
         {
             this._disponible = disponible;
-            this._medioDePago = medioDePago;
             this._pagoTotalDia = 0;
         }
         public List<Plato> PlatosAsignadosDelivery
@@ -33,12 +31,6 @@ namespace BibResto
             get { return _pagoTotalDia; }
             set {  this._pagoTotalDia = value; }
         }
-        public string MedioDePago
-        {
-            get { return this._medioDePago; }
-            set { this.MedioDePago = value; }
-        }
-
         public void PagoEfectuado()
         {
             foreach (Plato plato in PlatosAsignadosDelivery)

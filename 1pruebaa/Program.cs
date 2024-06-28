@@ -16,7 +16,7 @@ namespace _1pruebaa
                 Proveedor proveedor1 = new Proveedor("Proveedor 1", "Bebidas 1", "Efectivo", "22", "san martin 700", 4);
                 Restaurante restaurante = new Restaurante();
                 ContabilidadRestaurante contabilidad = new ContabilidadRestaurante();
-                Encargado encargado = new Encargado("Andres", "ARrguindegui", "siempreviva123", "46", 1000, "empleado", restaurante);
+                Encargado encargado = new Encargado("Andres", "ARrguindegui", "siempreviva123", "46", 1000, "empleado", restaurante, contabilidad);
 
                 // Configurar condiciones para el test
                 IConsumible bebida = new Bebida("CocaCola", 10, 1500, false);  // Precio alto para asegurar deuda

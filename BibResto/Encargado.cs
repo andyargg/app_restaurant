@@ -13,10 +13,10 @@ namespace BibResto
         private Restaurante _restaurante;
         private ContabilidadRestaurante _contabilidadRestaurante;
         private decimal _gananciaTotalDia;
-        public Encargado(string _nombre, string _apellido, string _direccion, string _contacto, decimal _sueldo, string _rol, Restaurante _restaurante) : base(_nombre, _apellido, _direccion, _contacto, _sueldo, _rol)
+        public Encargado(string _nombre, string _apellido, string _direccion, string _contacto, decimal _sueldo, string _rol, Restaurante _restaurante, ContabilidadRestaurante _contabilidadRestaurante) : base(_nombre, _apellido, _direccion, _contacto, _sueldo, _rol)
         {
             this._restaurante = _restaurante;
-            this._contabilidadRestaurante = new ContabilidadRestaurante();
+            this._contabilidadRestaurante = _contabilidadRestaurante;
         }
         public decimal GananciaTotalDia
         {
@@ -65,6 +65,17 @@ namespace BibResto
                 productoEncontrado.Precio = nuevoPrecio;
             }
         }
+
+        public void EliminarStockPlatoAsignado(Plato plato)
+        {
+            foreach (KeyValuePair<IConsumible, int> consumible in plato.Ingredientes)
+            {
+                if (plato.Ingredientes.ContainsKey(consumible.Key))
+                {
+                    consumible.Key.Stock -= consumible.Value;
+                }
+            }
+        }
         private void PagarProveedor(Proveedor proveedor, IConsumible consumible)
         {
             if (_contabilidadRestaurante.DineroDisponible < consumible.Precio)
@@ -76,7 +87,7 @@ namespace BibResto
                 _contabilidadRestaurante.DineroDisponible -= consumible.Precio;
             }
         }
-        public void CalcularGananciaDelDia(List<Mesero> listaMeseros, List<Delivery> listDeliveries) 
+        public void CalcularGananciaDelDia(List<Mesero> listaMeseros, List<Delivery> listDeliveries)
         {
             foreach (Mesero mesero in listaMeseros)
             {
@@ -87,6 +98,44 @@ namespace BibResto
                 GananciaTotalDia += delivery.PagoTotalDia;
             }
         }
+        public void PagarEmpleados(List<Encargado> encargados, List<Cocinero> cocineros, List<Mesero> meseros, List<Delivery> deliveries)
+        {
+            PagarEncargados(encargados);
+            PagarCocineros(cocineros);
+            PagarMeseros(meseros);
+            PagarDeliveries(deliveries);
+        }
+        private void PagarEncargados(List<Encargado> encargados)
+        {
+            foreach (Encargado encargado in encargados)
+            {
+                _contabilidadRestaurante.DineroDisponible -= encargado.Sueldo;
+            }
+        }
+        private void PagarCocineros(List<Cocinero> cocineros)
+        {
+            foreach (Cocinero cocinero in cocineros)
+            {
+                _contabilidadRestaurante.DineroDisponible -= cocinero.Sueldo;
+            }
+        }
+        private void PagarMeseros(List<Mesero> meseros)
+        {
+            foreach (Mesero mesero in meseros)
+            {
+                _contabilidadRestaurante.DineroDisponible -= mesero.Sueldo;
+            }
+        }
+        private void PagarDeliveries(List<Delivery> deliveries)
+        {
+            foreach (Delivery delivery in deliveries)
+            {
+                _contabilidadRestaurante.DineroDisponible -= delivery.Sueldo;
+            }
+        }
+
+
+
     }
 }
 
